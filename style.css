@@ -1,6 +1,6 @@
 body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background-image:url(bg.png);
+/*	background-image:url(images/Background.jpg);*/
 	margin: 0;
 	padding: 0;
 	color: #000;
@@ -37,16 +37,53 @@ a:active {
 }
 .container {
 	width: 960px;
-	background-color: #FFF;
-	margin: 0 auto; /
+/*	background-color: #FFF;*/
+	margin: auto; /
 }
 
 
 .content {
-
-	padding: 10px 0;
+/*	padding: 10px 0;*/
 }
 
+.container {
+	display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+/*    border: red solid 1px;*/
+}
+
+.header>h1{
+    text-align: center;
+}
+
+.map1{
+    display: block;
+    width: 550px;
+/*    border: blue 1px solid;*/
+    margin-left: 50px;
+}
+
+.map2{
+    width: 600px;
+/*    border: green 1px solid;*/
+    margin-left: 50px;
+}
+
+/*
+.left-div {
+    float: left; 
+    width: 1200px;
+    height: 1000px; 
+    margin-right: 600px;
+}
+
+.right-div {
+    float: right;
+    width: 1200px;
+    height: 1000px; 
+    margin-left: 8px;
+}
 
 .fltrt { 
 	float: right;
@@ -62,3 +99,7 @@ a:active {
 	font-size: 1px;
 	line-height: 0px;
 }
+*/
+
+
+center {background-color: aquamarine}
