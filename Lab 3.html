@@ -21,7 +21,222 @@
         <a href="Project.html">Project
         </a></font></center>
     <hr />
-   </div>
-  </div>
+   <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.40.1/mapbox-gl.css' rel='stylesheet'/>
+
+	
+    <div class="header">
+        <h1><b>Lab 3: Mapbox Studio and Mapbox gl js Mapping</b></h1>
+    </div>
+	<div class="container">
+	    <div class="map1">
+            <div id='map' style='width: 1200px; height: 1000px; float: right'></div>
+            <script>
+                mapboxgl.accessToken = 'pk.eyJ1IjoibWttdTA0NCIsImEiOiJjajZ6dHNwZHEwMDJjMnFuZGV4cGhtajJrIn0.DZLqH3bxbae69tUy2VIylg';
+                var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mkmu044/cj7rhmelv1pjb2qscq2u47do7',
+                center: [179.29,-41.49],
+                zoom: 5,
+                });
+            </script>
+        </div>
+        
+        <div class="map2">
+        <div>
+        <div id='map2' style='width: 1200px; height: 1000px; float: right'></div>
+            <script>
+                mapboxgl.accessToken = 'pk.eyJ1IjoibWttdTA0NCIsImEiOiJjajZ6dHNwZHEwMDJjMnFuZGV4cGhtajJrIn0.DZLqH3bxbae69tUy2VIylg';
+                var map2 = new mapboxgl.Map({
+                container: 'map2',
+                style: 'mapbox://styles/mkmu044/cj7tlxga81hh42rnpxev5b3i9',
+                center: [179.29,-41.49],
+                zoom: 5,
+                });
+            </script>
+            </div>
+            
+            <div class="right-div">
+                <div id="map2" style="height: 1000px">
+                    <script>
+                    mapboxgl.accessToken = 'pk.eyJ1IjoibWttdTA0NCIsImEiOiJjajZ6dHNwZHEwMDJjMnFuZGV4cGhtajJrIn0.DZLqH3bxbae69tUy2VIylg';
+                    var map2 = new mapboxgl.Map({
+                    container: 'map2',
+                    style: 'mapbox://styles/mkmu044/cj7tlxga81hh42rnpxev5b3i9',
+                    center: [172.478088,-40.749627],
+                    zoom: 4.5,
+                    });
+
+                    map2.on("load", function () {
+                        map2.addSource("greatwalksplan", {
+                            type: "vector", 
+                            url:"mapbox://styles/mkmu044/cj7tlxga81hh42rnpxev5b3i9",
+                        });
+
+                        map2.addLayer({
+                            "id": "greatwalksplan",
+                            "type": "line", 
+                            "source": "greatwalksplan",
+                            "source-layer": "greatwalksplan", 
+                            "layout": {
+                                "visibility": "visible", 
+                                "line-join": "round", 
+                                "line-cap": "round"
+                                },
+                                "paint": {
+                                    'line-color': "#A50ADA",
+                                    'line-width': 1.5
+                                }
+                                });
+
+                                map2.setLayerZoomRange("greatwalksplan", 10, 20);
+                            });
+
+                            map2.on("load", function () {
+                                map2.addSource("markers", {
+                                    "type": "geojson", 
+                                    "data": { 
+                                    "type": "FeatureCollection",
+                            "features": [
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Lake Waikaremoana"
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  176.9955825805664,
+                                  -38.810687138529275
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name ": "Tongariro National Circuit "
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  175.5823802947998,
+                                  -39.19517881853362
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Coastal Track "
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  173.03470015525818,
+                                  -40.86970800340857
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Heaphy Track"
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  172.29025840759277,
+                                  -40.87575607355434
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Routeburn Track"
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  168.1679821014404,
+                                  -44.74002353499291
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Milford Track"
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  167.7853488922119,
+                                  -44.81479211133096
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Kepler Track "
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  167.50931203365326,
+                                  -45.399054535775186
+                                ]
+                              }
+                            },
+                            {
+                              "type": "Feature",
+                              "properties": {
+                                "Name": "Rakiura Track"
+                              },
+                              "geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                  168.05442810058594,
+                                  -46.87802962512205
+                                ]
+                              }
+                            }
+                  ]
+                });
+
+
+            map2.addLayer({
+                "id": "markers",
+                "type": "symbol", 
+                "source": "markers",
+                "layout": {
+                    "icon-image": "marker-15", 
+                    "icon-ignore-placement": true, 
+                    "text-field":"{Name}", 
+                    "text-font": [""Open Sans Bold Italic", "Open Sans Bold Italic"],
+                    "text-offset": [3, 1.2],
+                    "text-size": 12, 
+                    "text-anchor": "left"
+                    }
+            });
+        });
+
+            map2.on('click', function (e) {
+                var features = map2.queryRenderedFeatures(e.point, { layers: ['markers']});
+                    map2.flyTo({center: feature[0].geometry.coordinates, zoom: 10});
+                }
+            });
+
+            map2.on('mousemove', function (e) {
+                var features = map2.queryRenderedFeatures(e.point, { layers: ['markers'] });
+                map2.getCanvas().style.cursor = features.length ? 'pointer' '';
+            });
+
+        </script>
+                </div>
+            </div>
+        </div>
+	</div>
 </body>
 </html>
