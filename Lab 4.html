@@ -25,7 +25,8 @@
   </div>
 </body>
   
-  <title>Lab 4 HTML Structural Fires</title>
+  <head>
+	<title>Lab 4 HTML Structural Fires</title>
 <div>
 <h1> Number of Reported Structural Fires across Auckland between 2013-2016</h1>
 <p> An interactive hexbin map showing reported incidences of structural fires across Auckland between January 2013 and June 2016.</p>
@@ -47,7 +48,7 @@
 		border-radius: 3px;
 		}
 		
-		.info h3{
+		.info h4{
 			margin: 1 1 2px;
 			color:white;
 			}
@@ -59,7 +60,7 @@
 			
 			.legend i {
 				width: 22px;
-				height: 14px;
+				height: 10px;
 				float: left;
 				margin-right:12px;
 				margin-left: 4px;
@@ -74,14 +75,14 @@
 
 <body>
 
-<center><div id="map" style="width: 950px; height: 600px;"></div><center>
+<center><div id="map" style="width: 950px; height: 600px;"></div></center>
 	
 	<script type="text/javascript" src="auckfires.js"></script>
 	
 	<script>
 		
 	
-		var mymap = L.map('map').setView([-36.92136, 174.84777], 10);
+		var mymap = L.map('map').setView([-36.92136, 174.84777], 10.3);
 
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 20,
@@ -109,7 +110,7 @@ var geojson = L.geoJson(fires).addTo(mymap);
     return {
         fillColor: getColor(feature.properties.NUMPOINTS),
         weight: 1,
-        opacity: 0.4,
+        opacity: 0.5,
         color: 'white',
         dashArray: '2',
         fillOpacity: 0.6
@@ -129,7 +130,7 @@ var geojson;
 		layer.setStyle({
 			weight:4,
 			color: 'black',
-			fillOpacity: 1
+			fillOpacity: 0.5
 		})
 		
 		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {layer.bringToFront();
@@ -141,24 +142,23 @@ geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 
 	function resetHighlight(e) {
     geojson.resetStyle(e.target);
-	info.update();
 }
 
 geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 	
-	function onEachFeature(feature, layer) {
+	function onEachFeature(feature, layer){
 		layer.on({ 
 			mouseover: highlightFeature,
 			museout: resetHighlight,
 		});
 }
+	geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 
 	geojson = L.geoJson(fires, {
 		style: style,
 		onEachFeature: onEachFeature
 		}).addTo(mymap);
 		
-		//info bar
 		
 		var info = L.control();
 		info.onAdd = function (mymap) {
@@ -168,7 +168,7 @@ geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 		};
 		
 		info.update = function (props) {
-			this._div.innerHTML = '<h3>Reported Structural Fires (2013-2016)</h3>' + (props ? '<b>' + props.Fires + '<b>' + '' + 'Fires' : 'Hover over hexbins' );
+			this._div.innerHTML = '<h4>Reported Structural Fires (2013-2016)</h4>' + (props ?  + props.NUMPOINTS + 'Fires' : 'Hover over hexbins' );
 		};
 		
 		info.addTo(mymap);
@@ -180,7 +180,7 @@ geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 		legend.onAdd = function (mymap) {
 		var div = L.DomUtil.create('div', 'info legend'), 
 			grades = [0,5,10,30,50,70,90,100],
-			labels = ['<h3>Auckland Structural Fires</h3>'],
+			labels = ['<h4>Auckland Structural Fires</h4>'],
 			from, to;
 			
 		for (var i = 0; i <grades.length; i++) {
@@ -189,7 +189,7 @@ geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 			
 			labels.push(
 				'<i style="background:' + getColor(from + 1) + '"></i>' + 
-				from + (to ? 'ndash;' + to : '+'));
+				from + (to ? '&ndash;' + to : '+'));
 			}
 			
 		div.innerHTML = labels.join('<br>');
@@ -202,6 +202,4 @@ geojson = L.geoJson(fires, {style: style}).addTo(mymap);
 	</script>
 	
 </body>
-</html>
-  
 </html>
